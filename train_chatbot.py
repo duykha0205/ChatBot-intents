@@ -57,6 +57,7 @@ training = []
 # create an empty array for our output
 output_empty = [0] * len(classes)
 # training set, bag of words for each sentence
+# print(documents)
 for doc in documents:
     # initialize our bag of words
     bag = []
@@ -94,5 +95,5 @@ model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy
 
 #fitting and saving the model 
 hist = model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=5, verbose=1)
-model.save('chatbot_model.h5py')
-print("model created")
+# model.save('chatbot_model.h5py')
+# print("model created")

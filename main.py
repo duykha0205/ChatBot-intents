@@ -1,3 +1,4 @@
+import imp
 import os
 import sys
 import pickle as pkl
@@ -8,6 +9,7 @@ from model import ChatBotModel
 from tensorflow.keras.optimizers import SGD
 from gui import *
 from tkinter import *
+from app import appWeb
 
 
 def main():
@@ -18,7 +20,11 @@ def main():
     args = parser.parse_args()
 
     if args.mode == 'train':
+        from train_chatbot import model
         print("----TRAIN MODE------")
+        model.save('chatbot_model.h5py')
+        print("model created")
+
     elif args.mode == 'app':
         print("----APP MODE------")
         root=Tk()
@@ -31,7 +37,7 @@ def main():
 
     elif args.mode == 'web':
         print("----WEB MODE------")
-
+        appWeb.run(debug=True)
 
    
     print("------DONE!-----")
